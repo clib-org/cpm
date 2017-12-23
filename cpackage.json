@@ -1,0 +1,14 @@
+{
+	"name": "example",
+	"version": "0.01",
+	"description": "Demo file for cpm",
+	"license": "MIT",
+
+	"path": "src/",
+	"lang": "c++",
+	"type": "bin",
+
+	"commands": {
+		"example": "echo Hello World!"
+	}
+}
