@@ -1,14 +1,50 @@
 {
-	"name": "example",
-	"version": "0.01",
-	"description": "Demo file for cpm",
-	"license": "MIT",
+	"name": "cpmdemo",
+  "version": "0.01",
+  "description": "a json file to demonstrate how to use cpm",
+  "license": "MIT",
+  "url": "https://example.org",
+  "bugtracker": "https://example.org",
 
-	"path": "src/",
-	"lang": "c++",
-	"type": "bin",
+  "authors": [
+    {
+      "name": "John Doe",
+      "email": "john.doe@mail.com",
+      "role": "owner"
+    }
+  ],
 
-	"commands": {
-		"example": "echo Hello World!"
-	}
+  "projects": {
+    "example": {
+      "path": "demo/src/",
+      "type": "binary",
+      "lang": "c++",
+      "dependencies": {
+        "libexample": "local"
+      }
+    },
+
+    "libexample": {
+      "path": "demo/lib/",
+      "type": "library",
+      "lang": "c++",
+      "flags": "-Wall -Werror",
+      "compiler": "std:c++11"
+    },
+
+    "example-test": {
+      "path": "demo/test/",
+      "type": "test"
+    },
+
+    "external-test": {
+      "type": "external-test",
+      "command": "echo Test"
+    }
+  },
+
+  "commands": {
+    "fetch": "git fetch",
+    "pull": "git pull"
+  }
 }

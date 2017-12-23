@@ -28,3 +28,20 @@ func NewPackageConfig(path string) PackageConfig {
 
 	return ret
 }
+
+func (s *PackageConfig) getProjects() []string {
+	var ret []string
+	value, ok := s.data["projects"]
+	if !ok {
+		return nil
+	}
+
+	switch v := value.(type) {
+	case map[string]interface{}:
+		for i, _ := range v {
+			ret = append(ret, i)
+		}
+	}
+
+	return ret
+}

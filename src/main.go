@@ -7,16 +7,20 @@ import (
 )
 
 func buildFunc(c *cli.Context) error {
-	var buildList []string
-	if len(c.Args()) == 0 {
-		buildList = nil
-	} else {
-		for _, s := range c.Args() {
-			buildList = append(buildList, s)
-		}
-	}
 
 	p := NewPackageConfig("")
+
+	if len(c.Args()) == 0 {
+		for _, s := range p.getProjects() {
+			pb := NewProjectBuilder(s, p)
+			pb.build()
+		}
+	} else {
+		for _, s := range c.Args() {
+			pb := NewProjectBuilder(s, p)
+			pb.build()
+		}
+	}
 
 	return nil
 }
